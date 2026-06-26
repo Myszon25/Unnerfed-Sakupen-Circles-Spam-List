@@ -16,7 +16,7 @@ body{
     overflow-x:hidden;
 }
 
-/* CONTAINER */
+/* CENTER CONTAINER */
 .container{
     width:100%;
     display:flex;
@@ -26,10 +26,10 @@ body{
     gap:20px;
 }
 
-/* CARD */
+/* CARD (FIX RESPONSIVE WIDTH) */
 .card{
     width: min(900px, 95vw);
-    min-height: 220px;
+    height: 220px;
 
     display:flex;
     border-radius:18px;
@@ -44,7 +44,8 @@ body{
 /* LEFT VIDEO */
 .left{
     width:35%;
-    min-height:220px;
+    height:100%;
+    position:relative;
 }
 
 .left iframe{
@@ -56,7 +57,8 @@ body{
 /* RIGHT IMAGE */
 .right{
     width:65%;
-    min-height:220px;
+    height:100%;
+    position:relative;
 }
 
 .right img{
@@ -65,7 +67,7 @@ body{
     object-fit:cover;
 }
 
-/* INFO */
+/* INFO TEXT */
 .info{
     position:absolute;
     top:10px;
@@ -107,39 +109,23 @@ body{
     color:white;
 }
 
-/* 📱 MOBILE FIX */
+/* ========================= */
+/* 📱 RESPONSIVE SCALING FIX */
+/* ========================= */
+
+/* tablet */
 @media (max-width: 768px){
-
     .card{
-        flex-direction:column;
+        transform: scale(0.9);
+        transform-origin: top center;
     }
+}
 
-    .left,
-    .right{
-        width:100%;
-        height:200px;
-    }
-
-    .info{
-        position:relative;
-        top:auto;
-        left:auto;
-        padding:10px;
-    }
-
-    .chance{
-        position:relative;
-        top:auto;
-        right:auto;
-        padding:10px;
-    }
-
-    .wr{
-        position:relative;
-        bottom:auto;
-        right:auto;
-        margin:10px;
-        display:inline-block;
+/* phone */
+@media (max-width: 480px){
+    .card{
+        transform: scale(0.8);
+        transform-origin: top center;
     }
 }
 
