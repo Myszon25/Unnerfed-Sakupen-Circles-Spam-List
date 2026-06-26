@@ -16,7 +16,7 @@ body{
     overflow-x:hidden;
 }
 
-/* CONTAINER (FIX GAP PROBLEM) */
+/* CONTAINER */
 .container{
     width:100%;
     display:flex;
@@ -41,11 +41,10 @@ body{
     position:relative;
 }
 
-/* LEFT (THUMBNAIL ONLY) */
+/* LEFT THUMBNAIL */
 .left{
     width:35%;
     height:100%;
-    position:relative;
 }
 
 .left img{
@@ -73,6 +72,7 @@ body{
     left:10px;
 }
 
+/* TEXTS */
 .title{
     font-size:20px;
     font-weight:800;
@@ -109,21 +109,14 @@ body{
     color:white;
 }
 
-/* 📱 MOBILE FIX — karty NIE mogą się oddalać */
+/* 📱 MOBILE FIX */
 @media (max-width: 768px){
-
-    .container{
-        gap:10px; /* ważne */
-    }
-
     .card{
         height:200px;
-        transform:none; /* usuwa “rozjeżdżanie” */
     }
 }
 
 @media (max-width: 480px){
-
     .card{
         height:180px;
     }
@@ -131,6 +124,21 @@ body{
     .title{
         font-size:16px;
     }
+}
+
+/* ========================= */
+/* 🔥 TEXT STROKE (OUTLINE) */
+/* ========================= */
+
+.title,
+.sub,
+.chance,
+.wr{
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
 }
 
 </style>
@@ -155,7 +163,7 @@ fetch("levels.json")
         const card = document.createElement("div");
         card.className = "card";
 
-        /* LEFT = YOUTUBE THUMBNAIL (bez tekstu yt) */
+        /* LEFT THUMBNAIL */
         const left = document.createElement("div");
         left.className = "left";
 
@@ -180,10 +188,7 @@ fetch("levels.json")
 
         info.innerHTML = `
             <div class="title">#${l.place} ${l.name}</div>
-            <div class="sub">
-                by ${l.author}<br>
-                id: ${l.id}
-            </div>
+            <div class="sub">by ${l.author}<br>id: ${l.id}</div>
         `;
 
         /* CHANCE */
