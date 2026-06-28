@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -9,244 +8,231 @@
 
 <style>
 
-*{
-    box-sizing:border-box;
-}
-
 body{
     margin:0;
-    background:#000;
+    background:black;
+    font-family:'Rubik', sans-serif;
     color:white;
-    font-family:'Rubik',sans-serif;
     overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* ===================== */
+/*      NAVBAR UPGRADE   */
+/* ===================== */
 
 .navbar{
     position:sticky;
     top:0;
-    z-index:1000;
-
-    width:100%;
-    padding:15px 25px;
+    z-index:999;
 
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    background:rgba(0,0,0,0.9);
-    backdrop-filter:blur(12px);
+    padding:14px 22px;
 
-    border-bottom:2px solid white;
+    background:rgba(10,10,10,0.65);
+    backdrop-filter: blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.6);
 }
 
+/* gradient title */
 .logo{
-    font-size:28px;
+    font-size:26px;
     font-weight:800;
+
+    background:linear-gradient(90deg,#fff,#9b7bff,#00d4ff,#fff);
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation: move 6s linear infinite;
+
+    letter-spacing:0.5px;
+}
+
+@keyframes move{
+    0%{background-position:0%;}
+    100%{background-position:300%;}
 }
 
 .right-nav{
     display:flex;
-    gap:12px;
     align-items:center;
+    gap:12px;
 }
 
+/* searchbar */
 #searchBar{
     width:260px;
-    max-width:40vw;
-
     padding:10px 14px;
-
-    border:none;
-    outline:none;
 
     border-radius:12px;
 
-    background:#111;
+    border:1px solid rgba(255,255,255,0.15);
+
+    background:rgba(255,255,255,0.05);
     color:white;
 
-    font-family:'Rubik',sans-serif;
+    outline:none;
+
+    transition:0.25s;
 }
 
-#searchBar::placeholder{
-    color:#aaa;
+#searchBar:focus{
+    width:290px;
+    border-color:#9b7bff;
+    box-shadow:0 0 15px rgba(155,123,255,0.35);
 }
 
+/* discord button */
 .discord{
-    width:45px;
-    height:45px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px 14px;
 
     border-radius:12px;
 
     background:#5865F2;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-decoration:none;
     color:white;
+    text-decoration:none;
 
-    transition:.2s;
+    font-weight:700;
+
+    transition:0.25s;
 }
 
 .discord:hover{
-    transform:scale(1.08);
+    transform:translateY(-2px);
+    box-shadow:0 0 20px rgba(88,101,242,0.5);
 }
 
 .discord svg{
-    width:24px;
-    height:24px;
+    width:20px;
+    height:20px;
 }
 
-/* CONTAINER */
+/* MOBILE */
+@media(max-width:700px){
+
+    .navbar{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    #searchBar{
+        width:200px;
+    }
+
+    #searchBar:focus{
+        width:220px;
+    }
+
+    .logo{
+        font-size:22px;
+        text-align:center;
+    }
+}
+
+/* ===================== */
+/*  RESZTA TWOJEGO KODU  */
+/* ===================== */
 
 .container{
     width:100%;
-    padding:20px;
-
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:18px;
+    padding:20px;
+    gap:15px;
 }
-
-/* CARD */
 
 .card{
-    width:min(950px,95vw);
-    height:220px;
+    width: min(900px, 95vw);
+    height: 220px;
 
     display:flex;
-
-    overflow:hidden;
     border-radius:18px;
+    overflow:hidden;
 
     border:2px solid white;
-    background:#090909;
+    background:#0a0a0a;
 
     position:relative;
-
-    transition:.25s;
 }
 
-.card:hover{
-    transform:translateY(-3px);
-}
+.left{ width:35%; height:100%; }
+.left img{ width:100%; height:100%; object-fit:cover; }
 
-.left{
-    width:35%;
-    height:100%;
-}
-
-.left img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.right{
-    width:65%;
-    height:100%;
-}
-
-.right img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-/* INFO */
+.right{ width:65%; height:100%; }
+.right img{ width:100%; height:100%; object-fit:cover; }
 
 .info{
     position:absolute;
-    left:12px;
-    top:12px;
+    top:10px;
+    left:10px;
 }
 
 .title{
-    font-size:22px;
+    font-size:20px;
     font-weight:800;
 }
 
 .sub{
-    font-size:13px;
-    opacity:.95;
-    margin-top:3px;
+    font-size:12px;
+    opacity:0.8;
+    line-height:1.2;
 }
-
-/* CHANCE */
 
 .chance{
     position:absolute;
-    top:12px;
-    right:12px;
-
-    font-size:15px;
+    top:10px;
+    right:10px;
     font-weight:800;
 }
 
-/* WR BUTTON */
-
 .wr{
     position:absolute;
+    bottom:10px;
+    right:10px;
 
-    right:12px;
-    bottom:12px;
-
-    padding:7px 14px;
-
+    padding:5px 10px;
     border-radius:12px;
 
-    background:rgba(255,255,255,.15);
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.5);
 
-    border:1px solid rgba(255,255,255,.5);
-
+    font-size:12px;
     text-decoration:none;
     color:white;
-
-    transition:.2s;
 }
 
-.wr:hover{
-    background:rgba(255,255,255,.25);
+@media (max-width: 768px){
+    .card{ height:200px; }
 }
 
-/* OUTLINE */
+@media (max-width: 480px){
+    .card{ height:180px; }
+    .title{ font-size:16px; }
+}
 
 .title,
 .sub,
 .chance,
 .wr{
     text-shadow:
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-    .navbar{
-        flex-direction:column;
-        gap:12px;
-    }
-
-    #searchBar{
-        width:220px;
-        max-width:80vw;
-    }
-
-    .card{
-        height:190px;
-    }
-
-    .title{
-        font-size:17px;
-    }
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
 }
 
 </style>
@@ -262,21 +248,14 @@ body{
 
     <div class="right-nav">
 
-        <input
-        type="text"
-        id="searchBar"
-        placeholder="Search level...">
+        <input type="text" id="searchBar" placeholder="Search level...">
 
-        <a
-        class="discord"
-        href="YOUR_DISCORD_LINK"
-        target="_blank">
-
+        <a class="discord" href="YOUR_DISCORD_LINK" target="_blank">
             <svg viewBox="0 0 127.14 96.36">
                 <path fill="currentColor"
-                d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36a77.7,77.7,0,0,0,6.89-11.13,68.42,68.42,0,0,1-10.84-5.18c.91-.66,1.8-1.34,2.66-2.06A75.57,75.57,0,0,0,95.71,78c.87.72,1.76,1.4,2.67,2.06a68.68,68.68,0,0,1-10.86,5.19,77,77,0,0,0,6.89,11.12A105.25,105.25,0,0,0,126.58,80.2C129.22,52.84,122.07,29.11,107.7,8.07Z"/>
+                d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83A72.37,72.37,0,0,0,45.64,0A105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21A105.73,105.73,0,0,0,32.71,96.36A77.7,77.7,0,0,0,39.6,85.23A68.42,68.42,0,0,1,28.76,80.05C29.67,79.39,30.56,78.71,31.42,77.99A75.57,75.57,0,0,0,95.71,78C96.58,78.72,97.47,79.4,98.38,80.06A68.68,68.68,0,0,1,87.52,85.25A77,77,0,0,0,94.41,96.37A105.25,105.25,0,0,0,126.58,80.2C129.22,52.84,122.07,29.11,107.7,8.07Z"/>
             </svg>
-
+            Discord
         </a>
 
     </div>
@@ -287,85 +266,65 @@ body{
 
 <script>
 
+let container = document.getElementById("container");
+let searchBar = document.getElementById("searchBar");
+
 let levelsData = [];
 
-const container = document.getElementById("container");
-const searchBar = document.getElementById("searchBar");
-
-function renderLevels(levels){
+function render(data){
 
     container.innerHTML = "";
 
-    levels.forEach(l=>{
+    data.forEach(l=>{
 
-        const card = document.createElement("div");
-        card.className = "card";
+        let card = document.createElement("div");
+        card.className="card";
 
-        card.innerHTML = `
-
+        card.innerHTML=`
         <div class="left">
             <img src="https://img.youtube.com/vi/${l.youtube}/hqdefault.jpg">
         </div>
 
         <div class="right">
-            <img src="${l.gif}" loading="lazy">
+            <img src="${l.gif}">
         </div>
 
         <div class="info">
             <div class="title">#${l.place} ${l.name}</div>
-            <div class="sub">
-                by ${l.author}<br>
-                id: ${l.id}
-            </div>
+            <div class="sub">by ${l.author}<br>id: ${l.id}</div>
         </div>
 
-        <div class="chance">
-            ${l.chance}
-        </div>
+        <div class="chance">${l.chance}</div>
 
-        <a
-        class="wr"
-        href="${l.wrLink}"
-        target="_blank">
+        <a class="wr" href="${l.wrLink}" target="_blank">
             ${l.wrName}
         </a>
-
         `;
 
         container.appendChild(card);
-
     });
-
 }
 
 fetch("levels.json")
 .then(r=>r.json())
 .then(data=>{
-
     levelsData = data.sort((a,b)=>a.place-b.place);
-
-    renderLevels(levelsData);
-
+    render(levelsData);
 });
 
 searchBar.addEventListener("input",()=>{
+    let v = searchBar.value.toLowerCase();
 
-    const value = searchBar.value.toLowerCase();
-
-    const filtered = levelsData.filter(level =>
-
-        level.name.toLowerCase().includes(value) ||
-        level.author.toLowerCase().includes(value) ||
-        String(level.id).includes(value)
-
+    let filtered = levelsData.filter(l=>
+        l.name.toLowerCase().includes(v) ||
+        l.author.toLowerCase().includes(v) ||
+        String(l.id).includes(v)
     );
 
-    renderLevels(filtered);
-
+    render(filtered);
 });
 
 </script>
 
 </body>
 </html>
-```
