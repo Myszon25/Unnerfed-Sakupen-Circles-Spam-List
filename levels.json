@@ -22,13 +22,36 @@
     "wrName": "WR (none)",
     "wrLink": "https://youtube.com/watch?v=example2"
   },
-
+  
   {
     "place": 4,
     "name": "049281B",
     "author": "000pm",
     "id": "141529679",
     "chance": "1/10^10^116",
+    "youtube": "PPKG-fzqqDUmg",
+    "gif": "https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif",
+    "wrName": "WR (none)",
+    "wrLink": "https://youtube.com/watch?v=example2"
+  },
+
+  {
+    "place": 5,
+    "name": "Wtf",
+    "author": "yar09810",
+    "id": "142153861",
+    "chance": "1/10^10^78",
+    "youtube": "baDUxw-W2Wo",
+    "gif": "https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif",
+    "wrName": "WR (none)",
+    "wrLink": "https://youtube.com/watch?v=example2"
+  },
+   {
+    "place": 4,
+    "name": "4x10 10 114",
+    "author": "daliscreator",
+    "id": "114065844",
+    "chance": "1/10^10^58",
     "youtube": "PPKG-fzqqDUmg",
     "gif": "https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif",
     "wrName": "WR (none)",
