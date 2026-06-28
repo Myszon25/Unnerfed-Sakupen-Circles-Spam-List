@@ -8,18 +8,19 @@
 
 <style>
     :root {
-        --bg-color: #030305;
-        --card-bg: rgba(15, 15, 20, 0.6);
+        --bg-color: #020204;
+        --card-bg: rgba(12, 12, 18, 0.6);
         --accent-1: #9b7bff;
         --accent-2: #00d4ff;
+        --accent-pink: #ff4dff;
         --discord: #5865F2;
-        --glass-border: rgba(255, 255, 255, 0.08);
+        --glass-border: rgba(255, 255, 255, 0.06);
     }
 
-    /* CUSTOM SCROLLBAR */
-    ::-webkit-scrollbar { width: 10px; }
+    /* PREMIUM SMOOTH SCROLLBAR */
+    ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg-color); }
-    ::-webkit-scrollbar-thumb { background: #2a2a35; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; border: 2px solid var(--bg-color); }
     ::-webkit-scrollbar-thumb:hover { background: var(--accent-1); }
 
     body {
@@ -28,149 +29,202 @@
         font-family: 'Rubik', sans-serif;
         color: white;
         overflow-x: hidden;
-        padding-top: 120px;
+        padding-top: 130px;
         min-height: 100vh;
     }
 
-    /* AMBIENT ANIMATED BACKGROUND */
+    /* AMBIENT MESH BACKGROUND */
     .ambient-bg {
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
         z-index: -1;
         background: 
-            radial-gradient(circle at 15% 50%, rgba(155, 123, 255, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 85% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 50%);
-        animation: pulseBg 15s ease-in-out infinite alternate;
+            radial-gradient(circle at 10% 20%, rgba(255, 77, 255, 0.06) 0%, transparent 40%),
+            radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 40%),
+            radial-gradient(circle at 50% 50%, rgba(155, 123, 255, 0.04) 0%, transparent 60%);
+        filter: blur(40px);
+        animation: drift 20s ease-in-out infinite alternate;
     }
 
-    @keyframes pulseBg {
-        0% { transform: scale(1); opacity: 0.8; }
-        100% { transform: scale(1.2); opacity: 1; }
+    @keyframes drift {
+        0% { transform: scale(1) rotate(0deg); }
+        100% { transform: scale(1.1) rotate(4deg); }
     }
 
     /* ===================== */
-    /* ULTRA NAVBAR          */
+    /* MASTERPIECE NAVBAR    */
     /* ===================== */
 
     .navbar {
         position: fixed;
-        top: 25px;
+        top: 20px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 999;
         
-        width: 90%;
-        max-width: 1200px;
-        height: 70px;
+        width: 92%;
+        max-width: 1300px;
+        height: 76px;
         
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 24px;
-        border-radius: 100px;
+        padding: 0 28px;
+        border-radius: 30px;
 
-        background: rgba(10, 10, 15, 0.5);
+        background: rgba(8, 8, 12, 0.6);
         backdrop-filter: blur(30px);
         -webkit-backdrop-filter: blur(30px);
         
         border: 1px solid var(--glass-border);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .navbar:hover {
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 
-                    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                    0 0 40px rgba(155, 123, 255, 0.2);
-        transform: translateX(-50%) translateY(-3px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 
+                    inset 0 1px 1px rgba(255, 255, 255, 0.1);
     }
 
     .logo {
-        font-size: 24px;
+        font-size: 22px;
         font-weight: 900;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
         cursor: pointer;
-
-        background: linear-gradient(to right, #fff, var(--accent-1), var(--accent-2), #fff);
+        background: linear-gradient(to right, #fff, var(--accent-pink), var(--accent-2), #fff);
         background-size: 300%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: moveGradient 5s linear infinite;
+        animation: moveGradient 6s linear infinite;
     }
 
     .right-nav {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 14px;
+    }
+
+    .search-container {
+        position: relative;
+        display: flex;
+        align-items: center;
     }
 
     #searchBar {
         width: 200px;
-        height: 42px;
-        padding: 0 20px;
-        border-radius: 100px;
+        height: 44px;
+        padding: 0 18px;
+        border-radius: 16px;
         border: 1px solid var(--glass-border);
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.04);
         color: white;
         font-family: inherit;
         font-weight: 500;
         outline: none;
-        transition: all 0.4s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     #searchBar:focus {
-        width: 280px;
-        background: rgba(0, 0, 0, 0.6);
-        border-color: var(--accent-2);
-        box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        width: 260px;
+        background: rgba(0, 0, 0, 0.5);
+        border-color: var(--accent-1);
+        box-shadow: 0 0 25px rgba(155, 123, 255, 0.25);
     }
 
-    /* BUTTONS */
+    /* CUSTOM SELECT DROPDOWN */
+    .sort-dropdown {
+        height: 44px;
+        padding: 0 14px;
+        border-radius: 16px;
+        border: 1px solid var(--glass-border);
+        background: rgba(255, 255, 255, 0.04);
+        color: #ccc;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 13px;
+        outline: none;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .sort-dropdown:hover, .sort-dropdown:focus {
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+        border-color: var(--accent-2);
+    }
+
+    .sort-dropdown option {
+        background: #0d0d13;
+        color: white;
+    }
+
+    /* INTERACTIVE BUTTONS */
     .btn {
-        height: 42px;
-        padding: 0 24px;
-        border-radius: 100px;
+        height: 44px;
+        padding: 0 22px;
+        border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
         text-decoration: none;
         font-weight: 700;
-        font-size: 14px;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
+        font-size: 13px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
     }
 
     .discord {
-        background: var(--discord);
-        color: white;
-        box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
+        background: rgba(88, 101, 242, 0.15);
+        color: #7983f5;
+        border: 1px solid rgba(88, 101, 242, 0.3);
     }
 
     .discord:hover {
+        background: var(--discord);
+        color: white;
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(88, 101, 242, 0.6);
-        background: #6974f3;
+        box-shadow: 0 10px 25px rgba(88, 101, 242, 0.4);
     }
 
     .theo-btn {
-        background: linear-gradient(135deg, #ff4dff, var(--accent-1), var(--accent-2));
+        background: linear-gradient(135deg, var(--accent-pink), var(--accent-1), var(--accent-2));
         background-size: 200%;
         color: white;
-        box-shadow: 0 4px 15px rgba(155, 123, 255, 0.3);
+        box-shadow: 0 4px 20px rgba(155, 123, 255, 0.25);
     }
 
     .theo-btn:hover {
         background-position: 100%;
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(155, 123, 255, 0.6);
+        box-shadow: 0 10px 25px rgba(155, 123, 255, 0.45);
     }
 
     /* ===================== */
-    /* CARDS & CONTAINERS    */
+    /* STATS DASHBOARD PANEL */
+    /* ===================== */
+
+    .stats-panel {
+        width: min(900px, 95vw);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-bottom: 10px;
+    }
+
+    .stat-box {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        padding: 16px 20px;
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .stat-label { font-size: 11px; text-transform: uppercase; color: #777; font-weight: 700; letter-spacing: 1px; }
+    .stat-value { font-size: 22px; font-weight: 900; color: #fff; }
+    .stat-box:nth-child(2) .stat-value { color: var(--accent-2); }
+    .stat-box:nth-child(3) .stat-value { color: var(--accent-pink); }
+
+    /* ===================== */
+    /* GAME LIST CONTAINER   */
     /* ===================== */
 
     .container {
@@ -178,224 +232,158 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 0 20px 50px 20px;
-        gap: 30px;
+        padding: 0 20px 80px 20px;
+        gap: 25px;
+        box-sizing: border-box;
     }
 
     .card {
         width: min(900px, 95vw);
         height: 240px;
         display: flex;
-        border-radius: 24px;
+        border-radius: 26px;
         overflow: hidden;
-        
         background: var(--card-bg);
         backdrop-filter: blur(20px);
         border: 1px solid var(--glass-border);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-        
+        box-shadow: 0 20px 45px rgba(0,0,0,0.5);
         position: relative;
-        opacity: 0; /* For entry animation */
-        transform: translateY(30px) scale(0.95);
+        opacity: 0;
+        transform: translateY(40px);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                    box-shadow 0.4s, border-color 0.4s;
     }
 
-    /* Staggered Entry Animation */
     @keyframes cardEnter {
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .card:hover {
-        transform: translateY(-5px) scale(1.01) !important;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(155, 123, 255, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        transform: translateY(-6px) scale(1.015);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 40px rgba(155, 123, 255, 0.15);
+        border-color: rgba(255,255,255,0.2);
     }
 
-    /* MEDIA SPLIT */
+    /* MEDIA DIVISIONS */
     .left { 
-        width: 40%; 
-        height: 100%; 
-        position: relative;
-        cursor: pointer;
-        background: #000;
-        overflow: hidden;
+        width: 38%; height: 100%; 
+        position: relative; cursor: pointer;
+        background: #000; overflow: hidden;
     }
-    
     .left img, .right img { 
-        width: 100%; 
-        height: 100%; 
-        object-fit: cover; 
-        transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        width: 100%; height: 100%; object-fit: cover; 
+        transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
-    /* Cinematic Zoom on hover */
-    .card:hover .left img, .card:hover .right img {
-        transform: scale(1.08);
-    }
-    
+    .card:hover .left img, .card:hover .right img { transform: scale(1.06); }
     .left iframe { width: 100%; height: 100%; border: none; }
 
-    .right { 
-        width: 60%; 
-        height: 100%; 
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* Vignette overlay to make text readable */
+    .right { width: 62%; height: 100%; position: relative; overflow: hidden; }
     .right::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to right, rgba(10,10,15,1) 0%, rgba(10,10,15,0.4) 40%, transparent 100%);
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(to right, rgba(2,2,4,1) 0%, rgba(2,2,4,0.6) 35%, transparent 100%);
     }
 
-    /* PLAY BUTTON OVERLAY */
+    /* GLOWING PLAY INTERFACE */
     .play-overlay {
-        position: absolute;
-        inset: 0;
+        position: absolute; inset: 0;
         background: rgba(0, 0, 0, 0.4);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: flex; justify-content: center; align-items: center;
         transition: background 0.3s;
     }
-
     .left:hover .play-overlay { background: rgba(0, 0, 0, 0.1); }
-
+    
     .play-btn {
-        width: 60px; height: 60px;
-        background: rgba(255, 0, 0, 0.9);
+        width: 56px; height: 56px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255,255,255,0.4);
+        backdrop-filter: blur(12px);
         border-radius: 50%;
         display: flex; justify-content: center; align-items: center;
-        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.5);
-        animation: pulsePlay 2s infinite;
-        transition: all 0.3s;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-
-    @keyframes pulsePlay {
-        0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
-        70% { box-shadow: 0 0 0 20px rgba(255, 0, 0, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
-    }
-
     .play-btn::after {
-        content: ''; 
-        border-top: 12px solid transparent; 
-        border-bottom: 12px solid transparent; 
-        border-left: 18px solid white; 
-        margin-left: 6px;
+        content: ''; border-top: 10px solid transparent; border-bottom: 10px solid transparent;
+        border-left: 16px solid white; margin-left: 5px;
     }
-
     .left:hover .play-btn {
-        transform: scale(1.1);
-        background: #ff0000;
-        animation: none;
-        box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+        transform: scale(1.15);
+        background: white;
+        box-shadow: 0 0 30px rgba(255,255,255,0.6);
     }
+    .left:hover .play-btn::after { border-left-color: black; }
 
-    /* INFO & TYPOGRAPHY */
-    .info {
-        position: absolute;
-        top: 20px; left: 42%; /* Shifted to sit over the right div cleanly */
-        z-index: 10;
-        pointer-events: none;
-    }
-
-    .title-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 8px;
-    }
-
-    .rank {
-        background: linear-gradient(135deg, #FFD700, #FFA500);
-        color: #000;
-        padding: 4px 10px;
-        border-radius: 8px;
-        font-weight: 900;
-        font-size: 16px;
-        box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
-    }
-
-    .title { 
-        font-size: 26px; 
-        font-weight: 900; 
-        text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-    }
+    /* CARD DETAILS */
+    .info { position: absolute; top: 24px; left: 40%; z-index: 10; pointer-events: none; }
+    .title-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
     
-    .sub { 
-        font-size: 14px; 
-        color: #ccc;
-        font-weight: 500;
-        text-shadow: 0 2px 5px rgba(0,0,0,1);
+    .rank-badge {
+        background: linear-gradient(135deg, #12121c, #1a1a2e);
+        border: 1px solid rgba(155, 123, 255, 0.4);
+        color: var(--accent-1);
+        padding: 4px 10px; border-radius: 10px;
+        font-weight: 900; font-size: 14px;
     }
+    .title { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; }
+    .sub { font-size: 13px; color: #aaa; line-height: 1.5; font-weight: 500; }
     
     .chance {
-        position: absolute;
-        top: 20px; right: 20px;
-        font-weight: 900;
-        font-size: 22px;
+        position: absolute; top: 24px; right: 24px;
+        font-weight: 900; font-size: 20px;
         color: var(--accent-2);
-        text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
         z-index: 10;
     }
 
     .wr {
-        position: absolute;
-        bottom: 20px; right: 20px;
-        padding: 8px 18px;
-        border-radius: 100px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        font-size: 13px;
-        font-weight: 700;
-        text-decoration: none;
-        color: white;
-        transition: all 0.3s;
-        z-index: 10;
-        display: flex;
-        align-items: center;
-        gap: 6px;
+        position: absolute; bottom: 24px; right: 24px;
+        padding: 8px 18px; border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        font-size: 13px; font-weight: 700; text-decoration: none; color: white;
+        transition: all 0.3s; z-index: 10;
+        display: flex; align-items: center; gap: 6px;
     }
-
-    .wr::before {
-        content: '🏆';
-        font-size: 14px;
-    }
-
     .wr:hover {
-        background: white;
-        color: black;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+        background: white; color: black;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(255,255,255,0.15);
     }
 
-    /* MOBILE ADJUSTMENTS */
-    @media(max-width: 850px) {
+    /* EMPTY STATE DECORATION */
+    .empty-state {
+        grid-column: 1/-1; text-align: center;
+        padding: 40px; border-radius: 20px;
+        border: 1px dashed rgba(255,255,255,0.1);
+        color: #666; font-weight: 500; display: none;
+    }
+
+    /* TEXT LAYER COMPACTNESS PROTECTION */
+    .title, .sub, .chance, .wr {
+        text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+    }
+
+    /* ===================== */
+    /* RESPONSIVE DESIGN     */
+    /* ===================== */
+
+    @media(max-width: 900px) {
         .navbar {
-            flex-direction: column;
-            height: auto;
-            padding: 20px;
-            border-radius: 24px;
-            gap: 15px;
-            top: 15px;
+            flex-direction: column; height: auto;
+            padding: 20px; border-radius: 24px; gap: 15px; top: 10px;
         }
-        .right-nav { flex-wrap: wrap; justify-content: center; }
-        #searchBar { width: 100%; }
+        .right-nav { flex-wrap: wrap; justify-content: center; width: 100%; }
+        .search-container, #searchBar { width: 100%; }
         #searchBar:focus { width: 100%; }
-        body { padding-top: 200px; }
+        body { padding-top: 210px; }
         
-        .card { flex-direction: column; height: auto; }
-        .left, .right { width: 100%; height: 200px; }
-        .right::after { background: linear-gradient(to top, rgba(10,10,15,1) 0%, transparent 100%); }
-        .info { top: 215px; left: 15px; }
-        .chance { top: 215px; }
-        .card { padding-bottom: 80px; } /* Room for text below */
+        .stats-panel { gap: 10px; }
+        .stat-value { font-size: 18px; }
+
+        .card { flex-direction: column; height: auto; padding-bottom: 70px; }
+        .left, .right { width: 100%; height: 180px; }
+        .right::after { background: linear-gradient(to top, rgba(2,2,4,1) 0%, transparent 100%); }
+        .info { top: 195px; left: 20px; }
+        .chance { top: 195px; right: 20px; }
+        .wr { bottom: 15px; left: 20px; right: 20px; text-center: center; justify-content: center; }
     }
 
     @keyframes moveGradient {
@@ -411,24 +399,57 @@
 
 <div class="navbar">
     <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-        Luck Based Level List
+        Luck Based List
     </div>
 
     <div class="right-nav">
-        <input type="text" id="searchBar" placeholder="Search level, ID or author...">
-        <a class="btn theo-btn" href="YOUR_LINK_HERE" target="_blank">Theorically Possible</a>
+        <div class="search-container">
+            <input type="text" id="searchBar" placeholder="Search parameters...">
+        </div>
+        
+        <select id="sortSelect" class="sort-dropdown">
+            <option value="place">Sort: Placement</option>
+            <option value="chance">Sort: Lowest Chance</option>
+            <option value="alpha">Sort: Alphabetical</option>
+        </select>
+
+        <a class="btn theo-btn" href="YOUR_LINK_HERE" target="_blank">Theoretically Possible</a>
         <a class="btn discord" href="YOUR_DISCORD_LINK" target="_blank">Discord</a>
     </div>
 </div>
 
-<div class="container" id="container"></div>
+<div class="container">
+    <div class="stats-panel">
+        <div class="stat-box">
+            <div class="stat-label">Total Documented</div>
+            <div class="stat-value" id="statTotal">0</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Average Rarity</div>
+            <div class="stat-value" id="statAvg">0%</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-label">Top Difficulty</div>
+            <div class="stat-value" id="statHardest">-</div>
+        </div>
+    </div>
+
+    <div id="container" style="width:100%; display:flex; flex-direction:column; align-items:center; gap:25px;"></div>
+    
+    <div id="emptyState" class="empty-state">
+        <span style="font-size: 24px; display:block; margin-bottom:8px;">🔍</span>
+        No matching levels found. Check your search query.
+    </div>
+</div>
 
 <script>
 let container = document.getElementById("container");
 let searchBar = document.getElementById("searchBar");
+let sortSelect = document.getElementById("sortSelect");
+let emptyState = document.getElementById("emptyState");
+
 let levelsData = [];
 
-// YouTube Iframe Injector
 window.playVideo = function(element, videoId) {
     element.innerHTML = `
         <iframe 
@@ -439,75 +460,111 @@ window.playVideo = function(element, videoId) {
     element.style.cursor = 'default';
 };
 
+// COMPUTE DASHBOARD METRICS
+function calculateStats(data) {
+    if(data.length === 0) {
+        document.getElementById("statTotal").innerText = "0";
+        document.getElementById("statAvg").innerText = "0%";
+        document.getElementById("statHardest").innerText = "-";
+        return;
+    }
+    
+    document.getElementById("statTotal").innerText = data.length;
+    
+    // Calculate average mathematical chance rough parsing
+    let totalChance = 0;
+    data.forEach(l => {
+        let parsed = parseFloat(l.chance.replace('%', ''));
+        totalChance += isNaN(parsed) ? 0 : parsed;
+    });
+    let avg = (totalChance / data.length).toFixed(3);
+    document.getElementById("statAvg").innerText = `${avg}%`;
+
+    // Extract absolute highest placement
+    let hardest = data.reduce((min, l) => l.place < min.place ? l : min, data[0]);
+    document.getElementById("statHardest").innerText = hardest ? `#${hardest.place} ${hardest.name}` : "-";
+}
+
 function render(data){
     container.innerHTML = "";
+    
+    if(data.length === 0) {
+        emptyState.style.display = "block";
+        return;
+    }
+    emptyState.style.display = "none";
 
     data.forEach((l, index) => {
         let card = document.createElement("div");
         card.className = "card";
-        
-        // Staggered animation delay based on index
-        let delay = index * 0.1;
-        card.style.animation = `cardEnter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards ${delay}s`;
+        card.style.animation = `cardEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards ${index * 0.06}s`;
 
         card.innerHTML = `
         <div class="left" onclick="playVideo(this, '${l.youtube}')">
-            <img src="https://img.youtube.com/vi/${l.youtube}/hqdefault.jpg" alt="${l.name}">
-            <div class="play-overlay">
-                <div class="play-btn"></div>
-            </div>
+            <img src="https://img.youtube.com/vi/${l.youtube}/hqdefault.jpg" alt="Thumbnail">
+            <div class="play-overlay"><div class="play-btn"></div></div>
         </div>
-
         <div class="right">
-            <img src="${l.gif}" alt="${l.name} gameplay">
+            <img src="${l.gif}" alt="Background Visual">
         </div>
-
         <div class="info">
-            <div class="title-wrapper">
-                <div class="rank">#${l.place}</div>
+            <div class="title-row">
+                <div class="rank-badge">#${l.place}</div>
                 <div class="title">${l.name}</div>
             </div>
-            <div class="sub">By ${l.author} • ID: ${l.id}</div>
+            <div class="sub">Creator: <b>${l.author}</b><br>ID: ${l.id}</div>
         </div>
-
         <div class="chance">${l.chance}</div>
-
-        <a class="wr" href="${l.wrLink}" target="_blank">
-            ${l.wrName}
-        </a>
+        <a class="wr" href="${l.wrLink}" target="_blank">🏆 ${l.wrName}</a>
         `;
-
         container.appendChild(card);
     });
 }
 
-// Simulate fetching JSON data
+function processData() {
+    let searchVal = searchBar.value.toLowerCase();
+    let sortVal = sortSelect.value;
+
+    // 1. Filter
+    let processed = levelsData.filter(l =>
+        l.name.toLowerCase().includes(searchVal) ||
+        l.author.toLowerCase().includes(searchVal) ||
+        String(l.id).includes(searchVal)
+    );
+
+    // 2. Sort
+    if(sortVal === "place") {
+        processed.sort((a,b) => a.place - b.place);
+    } else if (sortVal === "chance") {
+        processed.sort((a,b) => parseFloat(a.chance) - parseFloat(b.chance));
+    } else if (sortVal === "alpha") {
+        processed.sort((a,b) => a.name.localeCompare(b.name));
+    }
+
+    render(processed);
+}
+
+// FETCH DATA & INITIATE
 fetch("levels.json")
 .then(r => r.json())
 .then(data => {
-    levelsData = data.sort((a,b) => a.place - b.place);
-    render(levelsData);
+    levelsData = data;
+    calculateStats(levelsData);
+    processData();
 })
 .catch(err => {
-    console.log("No levels.json found. You must run this on a local server!");
-    // Fallback dummy data for visual testing if json fails
+    console.log("Local system safety catch: rendering demo content.");
     levelsData = [
-        { place: 1, name: "VSC", author: "BoBoBo", id: "666666", chance: "0.001%", youtube: "dQw4w9WgXcQ", gif: "https://i.imgur.com/yourgif.gif", wrLink: "#", wrName: "Player1" },
-        { place: 2, name: "Tartarus", author: "Riot", id: "123456", chance: "0.05%", youtube: "dQw4w9WgXcQ", gif: "https://i.imgur.com/yourgif.gif", wrLink: "#", wrName: "Player2" }
+        { place: 1, name: "VSC", author: "BoBoBo", id: "666666", chance: "0.001%", youtube: "dQw4w9WgXcQ", gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3VwY2NmdXJvYmdkMDNnbW96ZHZ0b3E0bWN6ZnA1bWxpY3p6bXF6dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Tov7edZ6tTuOg8w/giphy.gif", wrLink: "#", wrName: "Paqeo" },
+        { place: 2, name: "Tartarus", author: "Riot", id: "123456", chance: "0.052%", youtube: "dQw4w9WgXcQ", gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2VwYm81b3ZkM3JicnpqNDVhcWpxZnNwbTVvNXZpdXp0cHhrNDRxbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0HlHFRbmaZtBRhXG/giphy.gif", wrLink: "#", wrName: "Mefewe" },
+        { place: 3, name: "Acheron", author: "Zeronium", id: "789012", chance: "0.009%", youtube: "dQw4w9WgXcQ", gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnRwMzVvMnpvdWNvNDZhcTF0Z3RmbTVvNXZpdXp0cHhrNDRxbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgzoKnwFNmISR8I/giphy.gif", wrLink: "#", wrName: "Trick" }
     ];
-    render(levelsData);
+    calculateStats(levelsData);
+    processData();
 });
 
-// Search functionality
-searchBar.addEventListener("input", () => {
-    let v = searchBar.value.toLowerCase();
-    let filtered = levelsData.filter(l =>
-        l.name.toLowerCase().includes(v) ||
-        l.author.toLowerCase().includes(v) ||
-        String(l.id).includes(v)
-    );
-    render(filtered);
-});
+searchBar.addEventListener("input", processData);
+sortSelect.addEventListener("change", processData);
 </script>
 
 </body>
